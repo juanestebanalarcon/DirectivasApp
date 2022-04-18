@@ -1,0 +1,40 @@
+<h1 class="mt-5">Agregar Producto</h1>
+<hr>
+<form [formGroup]="formularioProductos">
+    <div class="row">
+        <div class="row g-3 align-items-center mb-3">
+            <div class="col-auto">
+                <label class="col-form-label">Nombre:</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" placeholder="Nombre de producto" formControlName="nombre">
+            </div>
+            <div class="col-auto">
+                <!--Con la directiva no necesito pasarle los parámetros, tomará valores por defecto.-->
+                <span  
+                error-msg 
+                [color]="color" 
+                [mensaje]="texto_1"
+                [valido]="!tieneError('nombre')">
+               <!-- Este campo es requerido.-->
+            </span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <button class="btn btn-primary" (click)="cambiarNombre()">Guardar</button>
+            &nbsp;
+            <button class="btn btn-primary ml-1" (click)="cambiarColor()">Cambiar color</button>
+        </div>
+    </div>
+</form>
+<h3 class="mt-5">Formulario</h3>
+<div class="row mt-5" *Custom-If="formularioProductos.valid">
+    <div class="col">
+        <!--*ngIf="!tieneError('nombre')"-->
+        <div class="alert alert-primary mt-5" >
+            ¡Todo OK!
+        </div>
+    </div>
+</div>
